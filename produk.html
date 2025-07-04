@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produk - Kedai Maknanun</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- My Style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">Kedai<span>Maknanun</span></a>
+
+    <div class="navbar-nav">
+      <a href="index.html">Home</a>
+      <a href="tentang.html">Tentang Kami</a>
+      <a href="menu.html">Menu</a>
+      <a href="produk.html">Produk</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+
+    <div class="navbar-extra">
+      <a href="#" id="search-button"><i data-feather="search"></i></a>
+      <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+      <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+    </div>
+
+    <!-- Search Form -->
+    <div class="search-form">
+      <input type="text" id="search-box" placeholder="Cari produk...">
+      <label for="search-box"><i data-feather="search"></i></label>
+    </div>
+
+    <!-- Shopping Cart (dummy, nanti bisa dinamis) -->
+    <div class="shopping-cart" id="cart-content">
+      <p>Belum ada item di keranjang</p>
+    </div>
+  </nav>
+
+  <!-- Products Section -->
+  <section class="products" id="products">
+    <h2><span>Produk</span> Kami</h2>
+    <p>Kami juga menjual makanan kemasan yang bisa Anda bawa pulang</p>
+
+    <div class="row">
+      <!-- LOOP 10 PRODUK -->
+      <script>
+  const products = [
+    { name: 'Paket Ayam Spesial', price: 25000, image: 'produk1.jpg' },
+    { name: 'Rendang Kemasan', price: 40000, image: 'produk2.jpg' },
+    { name: 'Abon Sapi Premium', price: 35000, image: 'produk3.jpg' },
+    { name: 'Keripik Tempe', price: 15000, image: 'produk4.jpg' },
+    { name: 'Sambal Bawang Botol', price: 12000, image: 'produk5.jpg' },
+    { name: 'Paket Nasi Komplit', price: 30000, image: 'produk6.jpg' },
+    { name: 'Dendeng Balado', price: 37000, image: 'produk7.jpg' },
+    { name: 'Paket Bebek Rica', price: 32000, image: 'produk8.jpg' },
+    { name: 'Kering Tempe', price: 10000, image: 'produk9.jpg' },
+    { name: 'Sambal Ijo Botol', price: 14000, image: 'produk10.jpg' },
+  ];
+
+  document.write(products.map(p => `
+    <div class="product-card">
+      <div class="product-icons">
+        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        <a href="#" onclick="addToCart('${p.name}', ${p.price})"><i data-feather="shopping-cart"></i></a>
+      </div>
+      <div class="product-image">
+        <img src="img/menu/${p.image}" alt="${p.name}">
+      </div>
+      <div class="product-content">
+        <h3>${p.name}</h3>
+        <div class="product-stars">
+          <i data-feather="star"></i><i data-feather="star"></i><i data-feather="star"></i><i data-feather="star"></i><i data-feather="star"></i>
+        </div>
+        <div class="product-price">Rp ${p.price.toLocaleString("id-ID")} <span>Rp ${(p.price * 1.2).toLocaleString("id-ID")}</span></div>
+      </div>
+    </div>
+  `).join(''));
+</script>
+
+    </div>
+  </section>
+
+  <!-- Modal Box (1 produk saja untuk contoh, nanti bisa dinamis pakai JS) -->
+  <div class="modal" id="item-detail-modal">
+    <div class="modal-container">
+      <a href="#" class="close-icon"><i data-feather="x"></i></a>
+      <div class="modal-content">
+        <img src="img/menu/produk1.jpg" alt="Produk Detail">
+        <div class="product-content">
+          <h3>Paket Ayam Spesial</h3>
+          <p>Ayam goreng khas Kedai Maknanun lengkap dengan nasi, sambal, dan lalapan. Dikemas rapi dan higienis.</p>
+          <div class="product-stars">
+            <i data-feather="star"></i><i data-feather="star"></i><i data-feather="star"></i><i data-feather="star"></i><i data-feather="star"></i>
+          </div>
+          <div class="product-price">Rp 25.000 <span>Rp 30.000</span></div>
+          <a href="#" onclick="addToCart('Paket Ayam Spesial', 25000)"><i data-feather="shopping-cart"></i> <span>Tambah ke keranjang</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="socials">
+      <a href="#"><i data-feather="instagram"></i></a>
+      <a href="#"><i data-feather="twitter"></i></a>
+      <a href="#"><i data-feather="facebook"></i></a>
+    </div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="menu.html">Menu</a>
+      <a href="produk.html">Produk</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+    <div class="credit">
+      <p>Created by <a href="#">Naila RH</a>. &copy; 2025</p>
+    </div>
+  </footer>
+
+  <!-- Feather Icons -->
+  <script>feather.replace();</script>
+
+  <!-- Cart JS -->
+  <script>
+    function addToCart(nama, harga) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ nama, harga });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(nama + " telah ditambahkan ke keranjang!");
+    }
+  </script>
+
+  <!-- My JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
