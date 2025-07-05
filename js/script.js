@@ -1,6 +1,5 @@
 // Toggle class active untuk hamburger menu
 const navbarNav = document.querySelector('.navbar-nav');
-// ketika hamburger menu di klik
 document.querySelector('#hamburger-menu').onclick = () => {
   navbarNav.classList.toggle('active');
 };
@@ -71,3 +70,21 @@ function addToCart(nama, harga) {
   localStorage.setItem("cart", JSON.stringify(cart));
   alert(nama + " telah ditambahkan ke keranjang!");
 }
+
+// ✅ FINAL: Toggle deskripsi, hanya satu yang terbuka
+document.querySelectorAll('.menu-card').forEach(function (card) {
+  card.addEventListener('click', function () {
+    const thisDesc = card.querySelector('.menu-description');
+    const isVisible = thisDesc.style.display === 'block';
+
+    // Sembunyikan semua deskripsi dulu
+    document.querySelectorAll('.menu-description').forEach(function (desc) {
+      desc.style.display = 'none';
+    });
+
+    // Kalau tadi belum terlihat, baru tampilkan
+    if (!isVisible) {
+      thisDesc.style.display = 'block';
+    }
+  });
+});
